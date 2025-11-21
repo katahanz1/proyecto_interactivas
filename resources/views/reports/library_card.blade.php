@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Card</title>
+    <title>Carnet de Biblioteca</title>
     <style>
         * {
             margin: 0;
@@ -103,35 +103,35 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Library Card</h1>
-                <p>Member Identification</p>
+                <h1>Carnet de Biblioteca</h1>
+                <p>Identificación de Miembro</p>
             </div>
 
             <div class="card-content">
                 <div class="card-field">
-                    <label>Full Name</label>
+                    <label>Nombre Completo</label>
                     <value>{{ $user->name }}</value>
                 </div>
 
                 <div class="card-field">
-                    <label>Email Address</label>
+                    <label>Correo Electrónico</label>
                     <value>{{ $user->email }}</value>
                 </div>
 
                 <div class="card-field">
-                    <label>Account Type</label>
-                    <value>{{ ucfirst($user->role) }}</value>
+                    <label>Tipo de Cuenta</label>
+                    <value>{{ $user->role === 'admin' ? 'Administrador' : 'Estudiante' }}</value>
                 </div>
 
                 <div class="card-field">
-                    <label>Member Since</label>
-                    <value>{{ $user->created_at->format('F d, Y') }}</value>
+                    <label>Miembro Desde</label>
+                    <value>{{ $user->created_at->format('d F, Y') }}</value>
                 </div>
             </div>
 
             <div class="card-footer">
-                <p>This card is issued for identification purposes only.</p>
-                <p>Generated: {{ date('F d, Y \a\t H:i') }}</p>
+                <p>Este carnet se emite únicamente para propósitos de identificación.</p>
+                <p>Generado: {{ date('d F, Y \a \l\a\s H:i') }}</p>
             </div>
         </div>
     </div>

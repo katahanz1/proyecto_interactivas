@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-3xl font-bold text-primary-900">
-                Books Management
+                Gestión de Libros
             </h2>
             <a href="{{ route('books.create') }}" class="btn-primary">
-                + Add New Book
+                + Añadir Nuevo Libro
             </a>
         </div>
     </x-slot>
@@ -22,8 +22,8 @@
             <!-- Books Table Card -->
             <div class="card">
                 <div class="mb-6 pb-6 border-b border-primary-200">
-                    <h3 class="text-xl font-bold text-primary-900">All Books</h3>
-                    <p class="text-sm text-primary-600 mt-1">Manage library book catalog</p>
+                    <h3 class="text-xl font-bold text-primary-900">Todos los Libros</h3>
+                    <p class="text-sm text-primary-600 mt-1">Gestionar catálogo de libros de la biblioteca</p>
                 </div>
 
                 <!-- Table -->
@@ -31,13 +31,13 @@
                     <table class="table-responsive">
                         <thead>
                             <tr>
-                                <th>Cover</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Category</th>
+                                <th>Portada</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Categoría</th>
                                 <th>ISBN</th>
                                 <th>Stock</th>
-                                <th class="text-center">Actions</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,10 +64,10 @@
                                     <td class="font-semibold text-primary-900">{{ $book->title }}</td>
 
                                     <!-- Author -->
-                                    <td class="text-primary-700">{{ $book->author->name ?? 'Unknown' }}</td>
+                                    <td class="text-primary-700">{{ $book->author->name ?? 'Autor Desconocido' }}</td>
 
                                     <!-- Category -->
-                                    <td class="text-primary-700">{{ $book->category->name ?? 'Uncategorized' }}</td>
+                                    <td class="text-primary-700">{{ $book->category->name ?? 'Sin Categoría' }}</td>
 
                                     <!-- ISBN -->
                                     <td class="text-primary-600 font-mono text-sm">{{ $book->isbn ?? '—' }}</td>
@@ -75,20 +75,20 @@
                                     <!-- Stock -->
                                     <td>
                                         @if($book->stock > 0)
-                                            <x-badge type="success">{{ $book->stock }} in stock</x-badge>
+                                            <x-badge type="success">{{ $book->stock }} en stock</x-badge>
                                         @else
-                                            <x-badge type="danger">Out of stock</x-badge>
+                                            <x-badge type="danger">Agotado</x-badge>
                                         @endif
                                     </td>
 
                                     <!-- Actions -->
                                     <td class="text-center">
                                         <div class="flex items-center justify-center gap-2">
-                                            <a href="{{ route('books.edit', $book->id) }}" class="link-button text-xs">Edit</a>
-                                            <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="inline" onsubmit="return confirm('Delete this book?')">
+                                            <a href="{{ route('books.edit', $book->id) }}" class="link-button text-xs">Editar</a>
+                                            <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Eliminar este libro?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="link-button-danger text-xs">Delete</button>
+                                                <button type="submit" class="link-button-danger text-xs">Eliminar</button>
                                             </form>
                                         </div>
                                     </td>
@@ -100,7 +100,7 @@
                                             <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
                                             <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm5-3a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
                                         </svg>
-                                        <p class="text-primary-500">No books in the catalog yet</p>
+                                        <p class="text-primary-500">Aún no hay libros en el catálogo</p>
                                     </td>
                                 </tr>
                             @endforelse

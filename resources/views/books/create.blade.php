@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-primary-900">
-            Create New Book
+            Crear Nuevo Libro
         </h2>
     </x-slot>
 
     <div class="py-8">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <x-form-card
-                title="Book Information"
-                description="Add a new book to the library catalog"
+                title="Información del Libro"
+                description="Añadir un nuevo libro al catálogo de la biblioteca"
                 icon='<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm5-3a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>'
             >
                 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -19,14 +19,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Title -->
                         <div>
-                            <x-input-label for="title" value="Title" />
+                            <x-input-label for="title" value="Título" />
                             <x-text-input
                                 id="title"
                                 name="title"
                                 type="text"
                                 required
                                 autofocus
-                                placeholder="Enter book title"
+                                placeholder="Ingresa el título del libro"
                             />
                             <x-input-error :messages="$errors->get('title')" />
                         </div>
@@ -43,7 +43,7 @@
                                     class="flex-1"
                                 />
                                 <button type="button" onclick="searchBook()" class="btn-secondary" id="search-btn">
-                                    Search
+                                    Buscar
                                 </button>
                             </div>
                             <p id="search-status" class="text-sm mt-2 hidden"></p>
@@ -55,14 +55,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Author -->
                         <div>
-                            <x-input-label for="author_id" value="Author" />
+                            <x-input-label for="author_id" value="Autor" />
                             <select
                                 id="author_id"
                                 name="author_id"
                                 class="input-base"
                                 required
                             >
-                                <option value="">Select an author...</option>
+                                <option value="">Selecciona un autor...</option>
                                 @foreach($authors as $author)
                                     <option value="{{ $author->id }}" @selected(old('author_id') == $author->id)>
                                         {{ $author->name }}
@@ -74,14 +74,14 @@
 
                         <!-- Category -->
                         <div>
-                            <x-input-label for="category_id" value="Category" />
+                            <x-input-label for="category_id" value="Categoría" />
                             <select
                                 id="category_id"
                                 name="category_id"
                                 class="input-base"
                                 required
                             >
-                                <option value="">Select a category...</option>
+                                <option value="">Selecciona una categoría...</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
                                         {{ $category->name }}
@@ -96,7 +96,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Published Year -->
                         <div>
-                            <x-input-label for="published_year" value="Published Year" />
+                            <x-input-label for="published_year" value="Año de Publicación" />
                             <x-text-input
                                 id="published_year"
                                 name="published_year"
@@ -110,7 +110,7 @@
 
                         <!-- Stock -->
                         <div>
-                            <x-input-label for="stock" value="Initial Stock" />
+                            <x-input-label for="stock" value="Stock Inicial" />
                             <x-text-input
                                 id="stock"
                                 name="stock"
@@ -125,7 +125,7 @@
 
                     <!-- Cover Image -->
                     <div>
-                        <x-input-label for="cover_image" value="Cover Image" />
+                        <x-input-label for="cover_image" value="Imagen de Portada" />
                         <div class="mt-2">
                             <input
                                 type="file"
@@ -139,30 +139,30 @@
                                     hover:file:bg-accent-200 file:cursor-pointer
                                     transition-colors"
                             />
-                            <p class="text-xs text-primary-500 mt-2">PNG, JPG or GIF (max. 5MB)</p>
+                            <p class="text-xs text-primary-500 mt-2">PNG, JPG o GIF (máx. 5MB)</p>
                         </div>
                         <x-input-error :messages="$errors->get('cover_image')" />
                     </div>
 
                     <!-- Description (if needed - optional) -->
                     <div>
-                        <x-input-label for="description" value="Description (Optional)" />
+                        <x-input-label for="description" value="Descripción (Opcional)" />
                         <textarea
                             id="description"
                             name="description"
                             rows="4"
                             class="input-base"
-                            placeholder="Enter book description..."
+                            placeholder="Ingresa la descripción del libro..."
                         ></textarea>
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="flex gap-3 justify-end pt-6 border-t border-primary-200">
                         <a href="{{ route('books.index') }}" class="btn-secondary">
-                            Cancel
+                            Cancelar
                         </a>
                         <button type="submit" class="btn-primary">
-                            Create Book
+                            Crear Libro
                         </button>
                     </div>
                 </form>
@@ -177,18 +177,18 @@
             const btn = document.getElementById('search-btn');
 
             if (!isbn) {
-                showStatus('Please enter an ISBN', 'danger');
+                showStatus('Por favor, ingresa un ISBN', 'danger');
                 return;
             }
 
             btn.disabled = true;
-            btn.textContent = 'Searching...';
-            showStatus('Searching...', 'info');
+            btn.textContent = 'Buscando...';
+            showStatus('Buscando...', 'info');
 
             fetch(`/api/external/book?isbn=${encodeURIComponent(isbn)}`)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Book not found');
+                        throw new Error('Libro no encontrado');
                     }
                     return response.json();
                 })
@@ -200,7 +200,7 @@
 
                     document.getElementById('title').value = data.title || '';
                     document.getElementById('published_year').value = data.published_year || '';
-                    
+
                     // Handle Author
                     if (data.author) {
                         handleDropdown('author_id', data.author, '/api/authors/find-or-create');
@@ -211,15 +211,15 @@
                         handleDropdown('category_id', data.category, '/api/categories/find-or-create');
                     }
 
-                    showStatus('Book found! Details populated.', 'success');
+                    showStatus('¡Libro encontrado! Detalles cargados.', 'success');
                 })
                 .catch(error => {
-                    showStatus('Error searching book. Please check the ISBN.', 'danger');
+                    showStatus('Error al buscar el libro. Por favor, verifica el ISBN.', 'danger');
                     console.error('Error:', error);
                 })
                 .finally(() => {
                     btn.disabled = false;
-                    btn.textContent = 'Search';
+                    btn.textContent = 'Buscar';
                 });
         }
 

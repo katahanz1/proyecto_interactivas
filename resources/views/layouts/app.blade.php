@@ -32,7 +32,7 @@
             <footer class="bg-white border-t border-primary-200 mt-12">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <p class="text-center text-sm text-primary-600">
-                        &copy; {{ date('Y') }} Library System. All rights reserved.
+                        &copy; {{ date('Y') }} Sistema de Biblioteca. Todos los derechos reservados.
                     </p>
                 </div>
             </footer>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-primary-900">
-            Book Catalog
+            Catálogo de Libros
         </h2>
     </x-slot>
 
@@ -39,7 +39,7 @@
                                         <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
                                         <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm5-3a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
                                     </svg>
-                                    <span class="text-sm font-semibold text-primary-500">No Cover Image</span>
+                                    <span class="text-sm font-semibold text-primary-500">Sin Imagen de Portada</span>
                                 </div>
                             @endif
                         </div>
@@ -51,15 +51,15 @@
                             </h3>
 
                             <p class="text-sm font-semibold text-accent-600 mb-1">
-                                {{ $book->author->name ?? 'Unknown Author' }}
+                                {{ $book->author->name ?? 'Autor Desconocido' }}
                             </p>
 
                             <p class="text-xs text-primary-500 uppercase tracking-wider font-semibold mb-3">
-                                {{ $book->category->name ?? 'Uncategorized' }}
+                                {{ $book->category->name ?? 'Sin Categoría' }}
                             </p>
 
                             <p class="text-sm text-primary-700 line-clamp-3 mb-4">
-                                {{ $book->description ?? 'No description available.' }}
+                                {{ $book->description ?? 'No hay descripción disponible.' }}
                             </p>
                         </div>
 
@@ -69,11 +69,11 @@
                                 <div>
                                     @if($book->stock > 0)
                                         <x-badge type="success" dot>
-                                            {{ $book->stock }} Available
+                                            {{ $book->stock }} Disponible
                                         </x-badge>
                                     @else
                                         <x-badge type="danger" dot>
-                                            Out of Stock
+                                            Agotado
                                         </x-badge>
                                     @endif
                                 </div>
@@ -84,12 +84,12 @@
                                     @csrf
                                     <input type="hidden" name="book_id" value="{{ $book->id }}">
                                     <button type="submit" class="btn-primary w-full">
-                                        Request Book
+                                        Solicitar Libro
                                     </button>
                                 </form>
                             @else
                                 <button disabled class="btn-secondary w-full opacity-50 cursor-not-allowed">
-                                    Unavailable
+                                    No Disponible
                                 </button>
                             @endif
                         </div>
@@ -102,8 +102,8 @@
                                 <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
                                 <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm5-3a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
                             </svg>
-                            <h3 class="text-xl font-bold text-primary-900 mb-2">No Books Available</h3>
-                            <p class="text-primary-600">The catalog is currently empty. Please check back later.</p>
+                            <h3 class="text-xl font-bold text-primary-900 mb-2">No Hay Libros Disponibles</h3>
+                            <p class="text-primary-600">El catálogo está actualmente vacío. Por favor, vuelve más tarde.</p>
                         </div>
                     </div>
                 @endforelse

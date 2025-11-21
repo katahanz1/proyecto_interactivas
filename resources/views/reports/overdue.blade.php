@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overdue Books Report</title>
+    <title>Reporte de Libros Vencidos</title>
     <style>
         * {
             margin: 0;
@@ -88,20 +88,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Overdue Books Report</h1>
+        <h1>Reporte de Libros Vencidos</h1>
         <div class="report-meta">
-            <p><strong>Generated:</strong> {{ date('F d, Y') }}</p>
-            <p><strong>Time:</strong> {{ date('H:i:s') }}</p>
+            <p><strong>Generado:</strong> {{ date('d F, Y') }}</p>
+            <p><strong>Hora:</strong> {{ date('H:i:s') }}</p>
         </div>
 
         @if(count($overdueLoans) > 0)
             <table>
                 <thead>
                     <tr>
-                        <th>Student Name</th>
-                        <th>Book Title</th>
-                        <th>Loan Date</th>
-                        <th>Due Date</th>
+                        <th>Nombre del Estudiante</th>
+                        <th>Título del Libro</th>
+                        <th>Fecha de Préstamo</th>
+                        <th>Fecha de Vencimiento</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,7 +117,7 @@
             </table>
         @else
             <div class="empty-state">
-                <p>No overdue loans found.</p>
+                <p>No se encontraron préstamos vencidos.</p>
             </div>
         @endif
     </div>

@@ -12,35 +12,35 @@
                 <div class="hidden md:flex space-x-1">
                     @if(Auth::user()->role === 'admin')
                         <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Dashboard
+                            Panel
                         </a>
                         <a href="{{ route('categories.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('categories.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Categories
+                            Categorías
                         </a>
                         <a href="{{ route('authors.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('authors.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Authors
+                            Autores
                         </a>
                         <a href="{{ route('books.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('books.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Books
+                            Libros
                         </a>
                         <a href="{{ route('loans.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Loans
+                            Préstamos
                         </a>
                         <a href="{{ route('reports.overdue') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.overdue') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Reports
+                            Reportes
                         </a>
                     @else
                         <a href="{{ route('student.dashboard') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('student.dashboard') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Dashboard
+                            Panel
                         </a>
                         <a href="{{ route('books.catalog') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('books.catalog') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Catalog
+                            Catálogo
                         </a>
                         <a href="{{ route('reports.library_card') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.library_card') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            Card
+                            Carnet
                         </a>
                         <a href="{{ route('reports.history') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.history') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                            History
+                            Historial
                         </a>
                     @endif
                 </div>
@@ -60,18 +60,18 @@
 
                         <x-slot name="content">
                             <div class="px-4 py-3 border-b border-primary-200">
-                                <p class="text-xs text-primary-600 font-semibold uppercase">Account</p>
+                                <p class="text-xs text-primary-600 font-semibold uppercase">Cuenta</p>
                                 <p class="text-sm font-semibold text-primary-900 mt-1">{{ Auth::user()->name }}</p>
                                 <p class="text-xs text-primary-600 mt-1">{{ Auth::user()->email }}</p>
                             </div>
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile Settings') }}
+                                Configuración de Perfil
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault(); this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    Cerrar Sesión
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -96,35 +96,35 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
             @if(Auth::user()->role === 'admin')
                 <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Dashboard
+                    Panel
                 </a>
                 <a href="{{ route('categories.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('categories.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Categories
+                    Categorías
                 </a>
                 <a href="{{ route('authors.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('authors.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Authors
+                    Autores
                 </a>
                 <a href="{{ route('books.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('books.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Books
+                    Libros
                 </a>
                 <a href="{{ route('loans.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Loans
+                    Préstamos
                 </a>
                 <a href="{{ route('reports.overdue') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.overdue') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Reports
+                    Reportes
                 </a>
             @else
                 <a href="{{ route('student.dashboard') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('student.dashboard') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Dashboard
+                    Panel
                 </a>
                 <a href="{{ route('books.catalog') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('books.catalog') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Catalog
+                    Catálogo
                 </a>
                 <a href="{{ route('reports.library_card') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.library_card') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    Card
+                    Carnet
                 </a>
                 <a href="{{ route('reports.history') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.history') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
-                    History
+                    Historial
                 </a>
             @endif
         </div>
@@ -140,12 +140,12 @@
             </div>
             <div class="mt-3 space-y-1">
                 <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-primary-700 hover:bg-primary-50 transition-colors">
-                    {{ __('Profile Settings') }}
+                    Configuración de Perfil
                 </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-primary-700 hover:bg-primary-50 transition-colors">
-                        {{ __('Log Out') }}
+                        Cerrar Sesión
                     </button>
                 </form>
             </div>

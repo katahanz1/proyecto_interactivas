@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="text-3xl font-bold text-primary-900">Categories Management</h2>
-            <a href="{{ route('categories.create') }}" class="btn-primary">+ Add Category</a>
+            <h2 class="text-3xl font-bold text-primary-900">Gestión de Categorías</h2>
+            <a href="{{ route('categories.create') }}" class="btn-primary">+ Añadir Categoría</a>
         </div>
     </x-slot>
 
@@ -14,18 +14,18 @@
 
             <div class="card">
                 <div class="mb-6 pb-6 border-b border-primary-200">
-                    <h3 class="text-xl font-bold text-primary-900">All Categories</h3>
-                    <p class="text-sm text-primary-600 mt-1">Organize books by category</p>
+                    <h3 class="text-xl font-bold text-primary-900">Todas las Categorías</h3>
+                    <p class="text-sm text-primary-600 mt-1">Organizar libros por categoría</p>
                 </div>
 
                 <div class="overflow-x-auto">
                     <table class="table-responsive">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Books Count</th>
-                                <th class="text-center">Actions</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Cantidad de Libros</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,18 +36,18 @@
                                     <td><x-badge type="info">{{ $category->books->count() }}</x-badge></td>
                                     <td class="text-center">
                                         <div class="flex items-center justify-center gap-2">
-                                            <a href="{{ route('categories.edit', $category->id) }}" class="link-button text-xs">Edit</a>
-                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline" onsubmit="return confirm('Delete?')">
+                                            <a href="{{ route('categories.edit', $category->id) }}" class="link-button text-xs">Editar</a>
+                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Eliminar?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="link-button-danger text-xs">Delete</button>
+                                                <button type="submit" class="link-button-danger text-xs">Eliminar</button>
                                             </form>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-8 text-primary-500">No categories yet</td>
+                                    <td colspan="4" class="text-center py-8 text-primary-500">Sin categorías aún</td>
                                 </tr>
                             @endforelse
                         </tbody>

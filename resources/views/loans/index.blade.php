@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-primary-900">
-            Loan Management
+            Gestión de Préstamos
         </h2>
     </x-slot>
 
@@ -18,11 +18,11 @@
             <div class="card">
                 <div class="flex items-center justify-between mb-6 pb-6 border-b border-primary-200">
                     <div>
-                        <h3 class="text-xl font-bold text-primary-900">All Loans</h3>
-                        <p class="text-sm text-primary-600 mt-1">Manage student book loans and returns</p>
+                        <h3 class="text-xl font-bold text-primary-900">Todos los Préstamos</h3>
+                        <p class="text-sm text-primary-600 mt-1">Gestionar préstamos y devoluciones de libros de estudiantes</p>
                     </div>
                     <a href="{{ route('loans.create') }}" class="btn-primary">
-                        + New Loan
+                        + Nuevo Préstamo
                     </a>
                 </div>
 
@@ -32,12 +32,12 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Student</th>
-                                <th>Book</th>
-                                <th>Loan Date</th>
-                                <th>Due Date</th>
-                                <th>Status</th>
-                                <th class="text-center">Actions</th>
+                                <th>Estudiante</th>
+                                <th>Libro</th>
+                                <th>Fecha de Préstamo</th>
+                                <th>Fecha de Vencimiento</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,9 +50,9 @@
                                     <td class="text-primary-600 font-mono text-sm">{{ \Carbon\Carbon::parse($loan->due_date)->format('M d, Y') }}</td>
                                     <td>
                                         @if($loan->status == 'borrowed')
-                                            <x-badge type="warning" dot>Borrowed</x-badge>
+                                            <x-badge type="warning" dot>Prestado</x-badge>
                                         @else
-                                            <x-badge type="success" dot>Returned</x-badge>
+                                            <x-badge type="success" dot>Devuelto</x-badge>
                                         @endif
                                     </td>
                                     <td class="text-center">
@@ -61,13 +61,13 @@
                                                 <form action="{{ route('loans.update', $loan->id) }}" method="POST" class="inline">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="link-button text-xs hover:underline">Return</button>
+                                                    <button type="submit" class="link-button text-xs hover:underline">Devolver</button>
                                                 </form>
                                             @endif
-                                            <form action="{{ route('loans.destroy', $loan->id) }}" method="POST" class="inline" onsubmit="return confirm('Delete this loan?')">
+                                            <form action="{{ route('loans.destroy', $loan->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Eliminar este préstamo?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="link-button-danger text-xs hover:underline">Delete</button>
+                                                <button type="submit" class="link-button-danger text-xs hover:underline">Eliminar</button>
                                             </form>
                                         </div>
                                     </td>
@@ -75,7 +75,7 @@
                             @empty
                                 <tr>
                                     <td colspan="7" class="text-center py-8">
-                                        <p class="text-primary-500">No loans found</p>
+                                        <p class="text-primary-500">No se encontraron préstamos</p>
                                     </td>
                                 </tr>
                             @endforelse

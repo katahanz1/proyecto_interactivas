@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan History Report</title>
+    <title>Reporte de Historial de Préstamos</title>
     <style>
         * {
             margin: 0;
@@ -103,21 +103,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Loan History: {{ $user->name }}</h1>
+        <h1>Historial de Préstamos: {{ $user->name }}</h1>
         <div class="report-meta">
-            <p><strong>Student:</strong> {{ $user->email }}</p>
-            <p><strong>Generated:</strong> {{ date('F d, Y') }}</p>
+            <p><strong>Estudiante:</strong> {{ $user->email }}</p>
+            <p><strong>Generado:</strong> {{ date('d F, Y') }}</p>
         </div>
 
         @if(count($loans) > 0)
             <table>
                 <thead>
                     <tr>
-                        <th>Book Title</th>
-                        <th>Loan Date</th>
-                        <th>Due Date</th>
-                        <th>Return Date</th>
-                        <th>Status</th>
+                        <th>Título del Libro</th>
+                        <th>Fecha de Préstamo</th>
+                        <th>Fecha de Vencimiento</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,7 +138,7 @@
             </table>
         @else
             <div class="empty-state">
-                <p>No loan history found for this student.</p>
+                <p>No se encontró historial de préstamos para este estudiante.</p>
             </div>
         @endif
     </div>

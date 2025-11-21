@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loan Due Reminder</title>
+    <title>Recordatorio de Préstamo Vencido</title>
 </head>
 <body>
-    <h1>Hello, {{ $loan->user->name }}</h1>
-    <p>This is a reminder that the book <strong>{{ $loan->book->title }}</strong> is due on <strong>{{ $loan->due_date }}</strong>.</p>
-    <p>Please return it on time to avoid penalties.</p>
-    <p>Thank you!</p>
+    <h1>Hola, {{ $loan->user->name }}</h1>
+    <p>Este es un recordatorio de que el libro <strong>{{ $loan->book->title }}</strong> vence el <strong>{{ $loan->due_date }}</strong>.</p>
+    <p>Por favor devuelve el libro a tiempo para evitar penalizaciones.</p>
+    <p>¡Gracias!</p>
 </body>
 </html>

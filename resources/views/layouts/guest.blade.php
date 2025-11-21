@@ -18,7 +18,7 @@
                     <div class="p-2 bg-white rounded-lg border border-primary-200 shadow-sm">
                         <x-application-logo class="w-8 h-8 fill-current text-primary-800" />
                     </div>
-                    <span class="font-bold text-2xl text-primary-900 hidden sm:inline">Library</span>
+                    <span class="font-bold text-2xl text-primary-900 hidden sm:inline">Biblioteca</span>
                 </a>
             </div>
 
@@ -31,7 +31,7 @@
                 <!-- Footer Link -->
                 <div class="mt-6 text-center">
                     <p class="text-sm text-primary-600">
-                        © {{ date('Y') }} Library System. All rights reserved.
+                        © {{ date('Y') }} Sistema de Biblioteca. Todos los derechos reservados.
                     </p>
                 </div>
             </div>

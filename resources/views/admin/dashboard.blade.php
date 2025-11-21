@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-3xl font-bold text-primary-900">
-            Admin Dashboard
+            Panel de Administrador
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
-                            <p class="text-label text-primary-600">Total Books</p>
+                            <p class="text-label text-primary-600">Total de Libros</p>
                             <p class="text-4xl font-bold text-primary-900 mt-2">{{ $totalBooks }}</p>
                         </div>
                         <div class="p-3 bg-accent-100 rounded-lg">
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
-                            <p class="text-label text-primary-600">Total Students</p>
+                            <p class="text-label text-primary-600">Total de Estudiantes</p>
                             <p class="text-4xl font-bold text-primary-900 mt-2">{{ $totalUsers }}</p>
                         </div>
                         <div class="p-3 bg-accent-100 rounded-lg">
@@ -39,7 +39,7 @@
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
-                            <p class="text-label text-primary-600">Active Loans</p>
+                            <p class="text-label text-primary-600">Préstamos Activos</p>
                             <p class="text-4xl font-bold text-accent-600 mt-2">{{ $activeLoans }}</p>
                         </div>
                         <div class="p-3 bg-accent-100 rounded-lg">
@@ -52,7 +52,7 @@
                 <div class="card border-danger-200">
                     <div class="flex items-start justify-between">
                         <div>
-                            <p class="text-label text-danger-600">Overdue Loans</p>
+                            <p class="text-label text-danger-600">Préstamos Vencidos</p>
                             <p class="text-4xl font-bold text-danger-600 mt-2">{{ $overdueLoans }}</p>
                         </div>
                         <div class="p-3 bg-danger-100 rounded-lg">
@@ -65,19 +65,19 @@
             <!-- Recent Loans Table -->
             <div class="card">
                 <div class="border-b border-primary-200 pb-4 mb-6">
-                    <h3 class="text-xl font-bold text-primary-900">Recent Loans</h3>
-                    <p class="text-sm text-primary-600 mt-1">Latest loan activity in the system</p>
+                    <h3 class="text-xl font-bold text-primary-900">Préstamos Recientes</h3>
+                    <p class="text-sm text-primary-600 mt-1">Actividad de préstamos más reciente del sistema</p>
                 </div>
 
                 <div class="overflow-x-auto">
                     <table class="table-responsive">
                         <thead>
                             <tr>
-                                <th>Student</th>
-                                <th>Book</th>
-                                <th>Loan Date</th>
-                                <th>Status</th>
-                                <th class="text-center">Actions</th>
+                                <th>Estudiante</th>
+                                <th>Libro</th>
+                                <th>Fecha de Préstamo</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,19 +90,19 @@
                                     </td>
                                     <td>
                                         @if($loan->status == 'borrowed')
-                                            <x-badge type="warning" dot>Borrowed</x-badge>
+                                            <x-badge type="warning" dot>Prestado</x-badge>
                                         @else
-                                            <x-badge type="success" dot>Returned</x-badge>
+                                            <x-badge type="success" dot>Devuelto</x-badge>
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('loans.index') }}" class="link-button text-xs">View</a>
+                                        <a href="{{ route('loans.index') }}" class="link-button text-xs">Ver</a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="5" class="text-center py-8">
-                                        <p class="text-primary-500">No recent loans found</p>
+                                        <p class="text-primary-500">No se encontraron préstamos recientes</p>
                                     </td>
                                 </tr>
                             @endforelse
@@ -112,7 +112,7 @@
 
                 <div class="mt-6 pt-6 border-t border-primary-200">
                     <a href="{{ route('loans.index') }}" class="btn-ghost text-sm">
-                        View All Loans →
+                        Ver Todos los Préstamos →
                     </a>
                 </div>
             </div>
