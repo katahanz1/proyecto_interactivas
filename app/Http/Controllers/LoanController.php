@@ -37,7 +37,7 @@ class LoanController extends Controller
         $book = Book::find($request->book_id);
 
         if ($book->stock < 1) {
-            return back()->withErrors(['book_id' => 'This book is out of stock.']);
+            return back()->withErrors(['book_id' => 'Este libro está agotado.']);
         }
 
         Loan::create([
@@ -50,18 +50,18 @@ class LoanController extends Controller
 
         $book->decrement('stock');
 
-        return redirect()->route('loans.index')->with('success', 'Loan created successfully.');
+        return redirect()->route('loans.index')->with('success', 'Préstamo creado exitosamente.');
     }
 
     public function approve(Loan $loan)
     {
         if ($loan->status !== 'requested') {
-            return back()->with('error', 'This loan is not in requested status.');
+            return back()->with('error', 'Este préstamo no está en estado solicitado.');
         }
 
         $book = $loan->book;
         if ($book->stock < 1) {
-            return back()->with('error', 'Cannot approve. Book is out of stock.');
+            return back()->with('error', 'No se puede aprobar. El libro está agotado.');
         }
 
         $loan->update([
@@ -72,7 +72,7 @@ class LoanController extends Controller
 
         $book->decrement('stock');
 
-        return back()->with('success', 'Loan approved successfully.');
+        return back()->with('success', 'Préstamo aprobado exitosamente.');
     }
 
     public function show(Loan $loan)
@@ -90,7 +90,7 @@ class LoanController extends Controller
     {
         // This method will handle returning the book
         if ($loan->status == 'returned') {
-            return back()->with('error', 'Book already returned.');
+            return back()->with('error', 'El libro ya ha sido devuelto.');
         }
 
         $loan->update([
@@ -100,7 +100,7 @@ class LoanController extends Controller
 
         $loan->book->increment('stock');
 
-        return redirect()->route('loans.index')->with('success', 'Book returned successfully.');
+        return redirect()->route('loans.index')->with('success', 'Libro devuelto exitosamente.');
     }
 
     public function destroy(Loan $loan)
@@ -110,7 +110,7 @@ class LoanController extends Controller
         }
         $loan->delete();
 
-        return redirect()->route('loans.index')->with('success', 'Loan deleted successfully.');
+        return redirect()->route('loans.index')->with('success', 'Préstamo eliminado exitosamente.');
     }
     public function requestLoan(Request $request)
     {
@@ -121,7 +121,7 @@ class LoanController extends Controller
         $book = Book::find($request->book_id);
 
         if ($book->stock < 1) {
-            return back()->with('error', 'This book is out of stock.');
+            return back()->with('error', 'Este libro está agotado.');
         }
 
         // Check if user already has a pending request or active loan for this book?
@@ -132,7 +132,7 @@ class LoanController extends Controller
                             ->exists();
 
         if ($existingLoan) {
-            return back()->with('error', 'You already have a request or active loan for this book.');
+            return back()->with('error', 'Ya tienes una solicitud o préstamo activo para este libro.');
         }
 
         Loan::create([
@@ -145,6 +145,23 @@ class LoanController extends Controller
 
         // Do NOT decrement stock yet. Stock decrements on approval.
 
-        return redirect()->route('books.catalog')->with('success', 'Loan requested successfully. Waiting for approval.');
+        return redirect()->route('books.catalog')->with('success', 'Préstamo solicitado exitosamente. Esperando aprobación.');
+    }
+
+    public function requestReturn(Loan $loan)
+    {
+        if ($loan->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        if ($loan->status !== 'borrowed') {
+            return back()->with('error', 'Solo se pueden devolver libros prestados.');
+        }
+
+        $loan->update([
+            'status' => 'return_requested',
+        ]);
+
+        return back()->with('success', 'Devolución solicitada exitosamente. Esperando confirmación del administrador.');
     }
 }

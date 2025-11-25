@@ -18,7 +18,7 @@ $iconSvg = match($type) {
 };
 @endphp
 
-<div {{ $attributes->merge(['class' => $alertClasses]) }} role="alert">
+<div {{ $attributes->merge(['class' => 'alert-base ' . $alertClasses]) }} role="alert">
     {!! $iconSvg !!}
     <div class="flex-1">
         @if ($title)

@@ -129,7 +129,12 @@
                             <td>{{ $loan->return_date ? \Carbon\Carbon::parse($loan->return_date)->format('M d, Y') : '—' }}</td>
                             <td>
                                 <span class="status-badge status-{{ strtolower($loan->status) }}">
-                                    {{ ucfirst($loan->status) }}
+                                    {{ match($loan->status) {
+                                        'borrowed' => 'Prestado',
+                                        'returned' => 'Devuelto',
+                                        'requested' => 'Solicitado',
+                                        default => ucfirst($loan->status),
+                                    } }}
                                 </span>
                             </td>
                         </tr>

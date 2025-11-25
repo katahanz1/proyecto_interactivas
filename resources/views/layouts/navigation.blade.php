@@ -26,7 +26,7 @@
                         <a href="{{ route('loans.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                             Préstamos
                         </a>
-                        <a href="{{ route('reports.overdue') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.overdue') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
+                        <a href="{{ route('reports.general') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.general') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                             Reportes
                         </a>
                     @else
@@ -110,7 +110,7 @@
                 <a href="{{ route('loans.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                     Préstamos
                 </a>
-                <a href="{{ route('reports.overdue') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.overdue') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
+                <a href="{{ route('reports.general') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.general') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                     Reportes
                 </a>
             @else

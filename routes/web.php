@@ -36,11 +36,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reports/library-card', [ReportController::class, 'libraryCard'])->name('reports.library_card');
     Route::get('/reports/overdue', [ReportController::class, 'overdueReport'])->name('reports.overdue');
+    Route::get('/reports/general', [ReportController::class, 'generalReport'])->name('reports.general');
     Route::get('/reports/history', [ReportController::class, 'historyReport'])->name('reports.history');
 
     Route::get('/catalog', [BookController::class, 'catalog'])->name('books.catalog');
     Route::post('/loans/request', [LoanController::class, 'requestLoan'])->name('loans.request');
     Route::patch('/loans/{loan}/approve', [LoanController::class, 'approve'])->name('loans.approve');
+    Route::patch('/loans/{loan}/return', [LoanController::class, 'requestReturn'])->name('loans.request_return');
 });
 
 require __DIR__.'/auth.php';

@@ -43,12 +43,24 @@
                                         </div>
                                     </div>
 
-                                    @if(\Carbon\Carbon::parse($loan->due_date)->isPast())
+                                    @if($loan->status == 'return_requested')
+                                        <x-badge type="info" dot>Devolución Solicitada</x-badge>
+                                    @elseif(\Carbon\Carbon::parse($loan->due_date)->isPast())
                                         <x-badge type="danger" dot>Vencido</x-badge>
                                     @else
                                         <x-badge type="success" dot>
-                                            {{ \Carbon\Carbon::parse($loan->due_date)->diffInDays() }} días restantes
+                                            {{ ceil(\Carbon\Carbon::parse($loan->due_date)->floatDiffInDays(now(), true)) }} días restantes
                                         </x-badge>
+                                    @endif
+
+                                    @if($loan->status == 'borrowed')
+                                        <form action="{{ route('loans.request_return', $loan->id) }}" method="POST" class="mt-4">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="w-full btn-secondary text-sm py-1" onclick="return confirm('¿Solicitar devolución de este libro?')">
+                                                Devolver Libro
+                                            </button>
+                                        </form>
                                     @endif
                                 </div>
                             </div>
@@ -97,7 +109,7 @@
                                         </td>
                                         <td class="text-primary-600">
                                             @if($loan->return_date)
-                                                {{ \Carbon\Carbon::parse($loan->loan_date)->diffInDays(\Carbon\Carbon::parse($loan->return_date)) }} días
+                                                {{ ceil(\Carbon\Carbon::parse($loan->loan_date)->floatDiffInDays(\Carbon\Carbon::parse($loan->return_date))) }} días
                                             @else
                                                 <span class="text-primary-400">—</span>
                                             @endif

@@ -17,7 +17,7 @@ class ApiController extends Controller
     {
         $isbn = $request->query('isbn');
         if (!$isbn) {
-            return response()->json(['error' => 'ISBN is required'], 400);
+            return response()->json(['error' => 'El ISBN es obligatorio'], 400);
         }
 
         try {
@@ -34,16 +34,16 @@ class ApiController extends Controller
                 ]);
             }
 
-            return response()->json(['error' => 'Book not found'], 404);
+            return response()->json(['error' => 'Libro no encontrado'], 404);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Server Error: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Error del servidor: ' . $e->getMessage()], 500);
         }
     }
     public function findOrCreateAuthor(Request $request)
     {
         $name = $request->input('name');
         if (!$name) {
-            return response()->json(['error' => 'Name is required'], 400);
+            return response()->json(['error' => 'El nombre es obligatorio'], 400);
         }
 
         $author = \App\Models\Author::firstOrCreate(['name' => $name]);
@@ -54,7 +54,7 @@ class ApiController extends Controller
     {
         $name = $request->input('name');
         if (!$name) {
-            return response()->json(['error' => 'Name is required'], 400);
+            return response()->json(['error' => 'El nombre es obligatorio'], 400);
         }
 
         $category = \App\Models\Category::firstOrCreate(['name' => $name]);

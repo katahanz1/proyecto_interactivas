@@ -51,17 +51,30 @@
                                     <td>
                                         @if($loan->status == 'borrowed')
                                             <x-badge type="warning" dot>Prestado</x-badge>
+                                        @elseif($loan->status == 'requested')
+                                            <x-badge type="info" dot>Solicitado</x-badge>
+                                        @elseif($loan->status == 'return_requested')
+                                            <x-badge type="purple" dot>Devolución Pendiente</x-badge>
                                         @else
                                             <x-badge type="success" dot>Devuelto</x-badge>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         <div class="flex items-center justify-center gap-2">
-                                            @if($loan->status == 'borrowed')
+                                            @if($loan->status == 'requested')
+                                                <form action="{{ route('loans.approve', $loan->id) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="link-button text-xs hover:underline">Aprobar</button>
+                                                </form>
+                                            @endif
+                                            @if($loan->status == 'borrowed' || $loan->status == 'return_requested')
                                                 <form action="{{ route('loans.update', $loan->id) }}" method="POST" class="inline">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="link-button text-xs hover:underline">Devolver</button>
+                                                    <button type="submit" class="link-button text-xs hover:underline">
+                                                        {{ $loan->status == 'return_requested' ? 'Confirmar Devolución' : 'Devolver' }}
+                                                    </button>
                                                 </form>
                                             @endif
                                             <form action="{{ route('loans.destroy', $loan->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Eliminar este préstamo?')">
