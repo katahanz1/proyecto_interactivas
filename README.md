@@ -6,6 +6,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+</p>
+
+## Configuración del Proyecto y Seeders (Base de Datos)
+
+Para configurar el proyecto y poblar la base de datos con datos de prueba (seeders), sigue estos pasos:
+
+1.  **Ejecutar Migraciones y Seeders (Inicio Limpio):**
+    Este comando eliminará todas las tablas, volverá a ejecutar todas las migraciones y luego ejecutará los seeders para llenar la base de datos.
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+2.  **Ejecutar solo Seeders:**
+    Si ya tienes la estructura de la base de datos y solo quieres poblarla:
+    ```bash
+    php artisan db:seed
+    ```
+
+El archivo principal de seeders se encuentra en `database/seeders/DatabaseSeeder.php`, este coordina la ejecución de otros seeders como `UserSeeder`, `BookSeeder`, etc.
 
 ## About Laravel
 
