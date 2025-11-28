@@ -7,25 +7,25 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Success Alert -->
+
             @if(session('success'))
                 <x-alert type="success" class="mb-6" dismissible>
                     {{ session('success') }}
                 </x-alert>
             @endif
 
-            <!-- Error Alert -->
+
             @if(session('error'))
                 <x-alert type="danger" class="mb-6" dismissible>
                     {{ session('error') }}
                 </x-alert>
             @endif
 
-            <!-- Books Grid -->
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse($books as $book)
                     <div class="card flex flex-col">
-                        <!-- Book Cover Image -->
+
                         <div class="mb-4 -m-6 mb-4 rounded-t-lg overflow-hidden bg-primary-100 h-48">
                             @if($book->cover_image)
                                 <img
@@ -44,7 +44,7 @@
                             @endif
                         </div>
 
-                        <!-- Book Info -->
+
                         <div class="flex-1">
                             <h3 class="text-lg font-bold text-primary-900 mb-1 line-clamp-2">
                                 {{ $book->title }}
@@ -63,7 +63,7 @@
                             </p>
                         </div>
 
-                        <!-- Stock & Action -->
+
                         <div class="border-t border-primary-200 pt-4 mt-4">
                             <div class="flex items-center justify-between mb-4">
                                 <div>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 @empty
-                    <!-- Empty State -->
+
                     <div class="col-span-full">
                         <div class="card bg-primary-50 border-primary-200 text-center py-12">
                             <svg class="w-16 h-16 text-primary-300 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">

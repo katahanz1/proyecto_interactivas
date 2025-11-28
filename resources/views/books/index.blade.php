@@ -4,7 +4,7 @@
             <h2 class="text-3xl font-bold text-primary-900">
                 Gestión de Libros
             </h2>
-            <a href="{{ route('books.create') }}" class="btn-primary">
+            <a href="{{ route('books.create') }}" class="btn-ghost">
                 + Añadir Nuevo Libro
             </a>
         </div>
@@ -12,21 +12,21 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Success Alert -->
+
             @if($message = Session::get('success'))
                 <x-alert type="success" class="mb-6" dismissible>
                     {{ $message }}
                 </x-alert>
             @endif
 
-            <!-- Books Table Card -->
+
             <div class="card">
                 <div class="mb-6 pb-6 border-b border-primary-200">
                     <h3 class="text-xl font-bold text-primary-900">Todos los Libros</h3>
                     <p class="text-sm text-primary-600 mt-1">Gestionar catálogo de libros de la biblioteca</p>
                 </div>
 
-                <!-- Table -->
+
                 <div class="overflow-x-auto">
                     <table class="table-responsive">
                         <thead>
@@ -43,7 +43,7 @@
                         <tbody>
                             @forelse($books as $book)
                                 <tr>
-                                    <!-- Cover Image -->
+
                                     <td class="w-12">
                                         @if($book->cover_image)
                                             <div class="rounded border border-primary-100 overflow-hidden h-12 bg-primary-50">
@@ -60,19 +60,19 @@
                                         @endif
                                     </td>
 
-                                    <!-- Title -->
+
                                     <td class="font-semibold text-primary-900">{{ $book->title }}</td>
 
-                                    <!-- Author -->
+
                                     <td class="text-primary-700">{{ $book->author->name ?? 'Autor Desconocido' }}</td>
 
-                                    <!-- Category -->
+
                                     <td class="text-primary-700">{{ $book->category->name ?? 'Sin Categoría' }}</td>
 
-                                    <!-- ISBN -->
+
                                     <td class="text-primary-600 font-mono text-sm">{{ $book->isbn ?? '—' }}</td>
 
-                                    <!-- Stock -->
+
                                     <td>
                                         @if($book->stock > 0)
                                             <x-badge type="success">{{ $book->stock }} en stock</x-badge>
@@ -81,7 +81,7 @@
                                         @endif
                                     </td>
 
-                                    <!-- Actions -->
+
                                     <td class="text-center">
                                         <div class="flex items-center justify-center gap-2">
                                             <a href="{{ route('books.edit', $book->id) }}" class="link-button text-xs">Editar</a>

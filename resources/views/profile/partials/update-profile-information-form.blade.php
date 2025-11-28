@@ -48,7 +48,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>Guardar</x-primary-button>
+            <button type="submit" class="btn-ghost">Guardar</button>
 
             @if (session('status') === 'profile-updated')
                 <p

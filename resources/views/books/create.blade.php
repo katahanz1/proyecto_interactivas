@@ -15,9 +15,9 @@
                 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
-                    <!-- Title & ISBN Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Title -->
+
                         <div>
                             <x-input-label for="title" value="Título" />
                             <x-text-input
@@ -31,7 +31,7 @@
                             <x-input-error :messages="$errors->get('title')" />
                         </div>
 
-                        <!-- ISBN with Search -->
+
                         <div>
                             <x-input-label for="isbn" value="ISBN" />
                             <div class="flex gap-2">
@@ -51,9 +51,9 @@
                         </div>
                     </div>
 
-                    <!-- Author & Category Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Author -->
+
                         <div>
                             <x-input-label for="author_id" value="Autor" />
                             <select
@@ -72,7 +72,7 @@
                             <x-input-error :messages="$errors->get('author_id')" />
                         </div>
 
-                        <!-- Category -->
+
                         <div>
                             <x-input-label for="category_id" value="Categoría" />
                             <select
@@ -92,9 +92,9 @@
                         </div>
                     </div>
 
-                    <!-- Published Year & Stock Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Published Year -->
+
                         <div>
                             <x-input-label for="published_year" value="Año de Publicación" />
                             <x-text-input
@@ -108,7 +108,7 @@
                             <x-input-error :messages="$errors->get('published_year')" />
                         </div>
 
-                        <!-- Stock -->
+
                         <div>
                             <x-input-label for="stock" value="Stock Inicial" />
                             <x-text-input
@@ -123,7 +123,7 @@
                         </div>
                     </div>
 
-                    <!-- Cover Image -->
+
                     <div>
                         <x-input-label for="cover_image" value="Imagen de Portada" />
                         <div class="mt-2">
@@ -144,7 +144,7 @@
                         <x-input-error :messages="$errors->get('cover_image')" />
                     </div>
 
-                    <!-- Description (if needed - optional) -->
+
                     <div>
                         <x-input-label for="description" value="Descripción (Opcional)" />
                         <textarea
@@ -156,7 +156,7 @@
                         ></textarea>
                     </div>
 
-                    <!-- Action Buttons -->
+
                     <div class="flex gap-3 justify-end pt-6 border-t border-primary-200">
                         <a href="{{ route('books.index') }}" class="btn-secondary">
                             Cancelar
@@ -201,12 +201,12 @@
                     document.getElementById('title').value = data.title || '';
                     document.getElementById('published_year').value = data.published_year || '';
 
-                    // Handle Author
+
                     if (data.author) {
                         handleDropdown('author_id', data.author, '/api/authors/find-or-create');
                     }
 
-                    // Handle Category
+
                     if (data.category) {
                         handleDropdown('category_id', data.category, '/api/categories/find-or-create');
                     }
@@ -227,7 +227,7 @@
             const select = document.getElementById(elementId);
             let found = false;
 
-            // Try to find existing option
+
             for (let i = 0; i < select.options.length; i++) {
                 if (select.options[i].text.toLowerCase() === name.toLowerCase()) {
                     select.selectedIndex = i;
@@ -236,7 +236,7 @@
                 }
             }
 
-            // If not found, create it
+
             if (!found) {
                 fetch(createUrl, {
                     method: 'POST',
@@ -268,7 +268,7 @@
                 'info': 'text-blue-600'
             };
             
-            // Reset classes
+
             status.className = 'text-sm mt-2';
             status.classList.add(typeClasses[type] || 'text-gray-600');
             status.textContent = message;

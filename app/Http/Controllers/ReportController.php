@@ -43,6 +43,7 @@ class ReportController extends Controller
     {
         $stats = [
             'total_books' => Book::count(),
+            'total_stock' => Book::sum('stock'),
             'total_students' => User::where('role', 'student')->count(),
             'active_loans' => Loan::where('status', 'borrowed')->count(),
             'overdue_loans' => Loan::where('status', 'borrowed')->where('due_date', '<', now())->count(),

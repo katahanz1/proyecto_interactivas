@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Book; // Added for the relationship
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -13,5 +13,5 @@ class Category extends Model
     {
         return $this->hasMany(Book::class);
     }
-    //
+
 }

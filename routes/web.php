@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('authors', AuthorController::class);
     Route::resource('books', BookController::class);
     Route::resource('loans', LoanController::class);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/student/dashboard', [StudentController::class, 'index'])->name('student.dashboard');

@@ -7,14 +7,14 @@
 
         <title>{{ config('app.name', 'Library System') }}</title>
 
-        <!-- Scripts -->
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased bg-primary-50">
         <div class="min-h-screen flex flex-col">
             @include('layouts.navigation')
 
-            <!-- Page Header -->
+
             @isset($header)
                 <header class="bg-white border-b border-primary-200">
                     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
@@ -23,12 +23,12 @@
                 </header>
             @endisset
 
-            <!-- Page Content -->
+
             <main class="flex-1">
                 {{ $slot }}
             </main>
 
-            <!-- Footer -->
+
             <footer class="bg-white border-t border-primary-200 mt-12">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <p class="text-center text-sm text-primary-600">

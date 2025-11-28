@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-3xl font-bold text-primary-900">Gestión de Autores</h2>
-            <a href="{{ route('authors.create') }}" class="btn-primary">+ Añadir Autor</a>
+            <a href="{{ route('authors.create') }}" class="btn-ghost">+ Añadir Autor</a>
         </div>
     </x-slot>
 

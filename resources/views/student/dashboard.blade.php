@@ -7,7 +7,7 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Active Loans Section -->
+
             <div class="mb-8">
                 <div class="mb-6">
                     <h3 class="text-2xl font-bold text-primary-900">Préstamos Activos</h3>
@@ -25,7 +25,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($activeLoans as $loan)
                             <div class="card relative overflow-hidden">
-                                <!-- Status Indicator -->
+
                                 <div class="absolute top-0 right-0 w-2 h-full {{ \Carbon\Carbon::parse($loan->due_date)->isPast() ? 'bg-danger-600' : 'bg-success-600' }}"></div>
 
                                 <div>
@@ -69,7 +69,7 @@
                 @endif
             </div>
 
-            <!-- Loan History Section -->
+
             <div class="card">
                 <div class="border-b border-primary-200 pb-4 mb-6">
                     <h3 class="text-xl font-bold text-primary-900">Historial de Préstamos</h3>

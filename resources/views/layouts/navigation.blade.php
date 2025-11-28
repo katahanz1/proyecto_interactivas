@@ -1,14 +1,14 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-primary-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-            <!-- Logo & Branding -->
+
             <div class="flex items-center gap-8">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
                     <x-application-logo class="block h-10 w-auto fill-current text-primary-800" />
                     <span class="font-bold text-lg text-primary-900 hidden sm:inline">Library</span>
                 </a>
 
-                <!-- Desktop Navigation Links -->
+
                 <div class="hidden md:flex space-x-1">
                     @if(Auth::user()->role === 'admin')
                         <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('admin.dashboard') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
@@ -25,6 +25,9 @@
                         </a>
                         <a href="{{ route('loans.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                             Préstamos
+                        </a>
+                        <a href="{{ route('users.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('users.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
+                            Usuarios
                         </a>
                         <a href="{{ route('reports.general') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('reports.general') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                             Reportes
@@ -46,9 +49,9 @@
                 </div>
             </div>
 
-            <!-- User Menu & Hamburger -->
+
             <div class="flex items-center gap-4">
-                <!-- Desktop User Dropdown -->
+
                 <div class="hidden sm:flex">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -78,7 +81,7 @@
                     </x-dropdown>
                 </div>
 
-                <!-- Mobile Hamburger -->
+
                 <button @click="open = !open" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-primary-700 hover:bg-primary-100 transition-colors">
                     <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -91,7 +94,7 @@
         </div>
     </div>
 
-    <!-- Mobile Navigation -->
+
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden border-t border-primary-200">
         <div class="px-2 pt-2 pb-3 space-y-1">
             @if(Auth::user()->role === 'admin')
@@ -109,6 +112,9 @@
                 </a>
                 <a href="{{ route('loans.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('loans.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                     Préstamos
+                </a>
+                <a href="{{ route('users.index') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('users.*') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
+                    Usuarios
                 </a>
                 <a href="{{ route('reports.general') }}" class="block px-3 py-2 rounded-lg text-base font-semibold {{ request()->routeIs('reports.general') ? 'bg-primary-100 text-accent-600' : 'text-primary-700 hover:bg-primary-50' }} transition-colors">
                     Reportes
@@ -129,7 +135,7 @@
             @endif
         </div>
 
-        <!-- Mobile User Section -->
+
         <div class="border-t border-primary-200 px-4 py-4 sm:hidden">
             <div class="flex items-center gap-3">
                 <svg class="w-10 h-10 text-primary-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>

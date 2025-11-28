@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-3xl font-bold text-primary-900">Gestión de Categorías</h2>
-            <a href="{{ route('categories.create') }}" class="btn-primary">+ Añadir Categoría</a>
+            <a href="{{ route('categories.create') }}" class="btn-ghost">+ Añadir Categoría</a>
         </div>
     </x-slot>
 

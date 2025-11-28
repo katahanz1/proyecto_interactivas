@@ -7,9 +7,9 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Stats Grid -->
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <!-- Total Books -->
+
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <!-- Total Students -->
+
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <!-- Active Loans -->
+
                 <div class="card">
                     <div class="flex items-start justify-between">
                         <div>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <!-- Overdue Loans -->
+
                 <div class="card border-danger-200">
                     <div class="flex items-start justify-between">
                         <div>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <!-- Recent Loans Table -->
+
             <div class="card">
                 <div class="border-b border-primary-200 pb-4 mb-6">
                     <h3 class="text-xl font-bold text-primary-900">Préstamos Recientes</h3>

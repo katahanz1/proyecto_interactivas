@@ -7,26 +7,26 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Success Alert -->
+
             @if(session('success'))
                 <x-alert type="success" class="mb-6">
                     {{ session('success') }}
                 </x-alert>
             @endif
 
-            <!-- Loans Table Card -->
+
             <div class="card">
                 <div class="flex items-center justify-between mb-6 pb-6 border-b border-primary-200">
                     <div>
                         <h3 class="text-xl font-bold text-primary-900">Todos los Préstamos</h3>
                         <p class="text-sm text-primary-600 mt-1">Gestionar préstamos y devoluciones de libros de estudiantes</p>
                     </div>
-                    <a href="{{ route('loans.create') }}" class="btn-primary">
+                    <a href="{{ route('loans.create') }}" class="btn-ghost">
                         + Nuevo Préstamo
                     </a>
                 </div>
 
-                <!-- Table -->
+
                 <div class="overflow-x-auto">
                     <table class="table-responsive">
                         <thead>
@@ -50,13 +50,13 @@
                                     <td class="text-primary-600 font-mono text-sm">{{ \Carbon\Carbon::parse($loan->due_date)->format('M d, Y') }}</td>
                                     <td>
                                         @if($loan->status == 'borrowed')
-                                            <x-badge type="warning" dot>Prestado</x-badge>
+                                            <x-badge type="warning">Prestado</x-badge>
                                         @elseif($loan->status == 'requested')
-                                            <x-badge type="info" dot>Solicitado</x-badge>
+                                            <x-badge type="info">Solicitado</x-badge>
                                         @elseif($loan->status == 'return_requested')
-                                            <x-badge type="purple" dot>Devolución Pendiente</x-badge>
+                                            <x-badge type="purple">Devolución Pendiente</x-badge>
                                         @else
-                                            <x-badge type="success" dot>Devuelto</x-badge>
+                                            <x-badge type="success">Devuelto</x-badge>
                                         @endif
                                     </td>
                                     <td class="text-center">

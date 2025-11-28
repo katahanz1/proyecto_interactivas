@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $books = Book::with(['author', 'category'])->get();
@@ -77,7 +74,7 @@ class BookController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('cover_image')) {
-            // Delete old image if exists
+
             if ($book->cover_image) {
                 Storage::disk('public')->delete($book->cover_image);
             }
@@ -90,9 +87,6 @@ class BookController extends Controller
         return redirect()->route('books.index')->with('success', 'Libro actualizado exitosamente.');
     }
 
-    /**
-     * Display the book catalog for students.
-     */
     public function catalog()
     {
         $books = Book::with(['author', 'category'])->get();

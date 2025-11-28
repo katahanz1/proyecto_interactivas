@@ -16,9 +16,9 @@
                     @csrf
                     @method('PUT')
 
-                    <!-- Title & ISBN Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Title -->
+
                         <div>
                             <x-input-label for="title" value="Título" />
                             <x-text-input
@@ -31,7 +31,7 @@
                             <x-input-error :messages="$errors->get('title')" />
                         </div>
 
-                        <!-- ISBN -->
+
                         <div>
                             <x-input-label for="isbn" value="ISBN" />
                             <x-text-input
@@ -44,9 +44,9 @@
                         </div>
                     </div>
 
-                    <!-- Author & Category Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Author -->
+
                         <div>
                             <x-input-label for="author_id" value="Autor" />
                             <select
@@ -65,7 +65,7 @@
                             <x-input-error :messages="$errors->get('author_id')" />
                         </div>
 
-                        <!-- Category -->
+
                         <div>
                             <x-input-label for="category_id" value="Categoría" />
                             <select
@@ -85,9 +85,9 @@
                         </div>
                     </div>
 
-                    <!-- Published Year & Stock Row -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Published Year -->
+
                         <div>
                             <x-input-label for="published_year" value="Año de Publicación" />
                             <x-text-input
@@ -101,7 +101,7 @@
                             <x-input-error :messages="$errors->get('published_year')" />
                         </div>
 
-                        <!-- Stock -->
+
                         <div>
                             <x-input-label for="stock" value="Stock" />
                             <x-text-input
@@ -116,7 +116,7 @@
                         </div>
                     </div>
 
-                    <!-- Current Cover Image -->
+
                     @if($book->cover_image)
                         <div class="border border-primary-200 rounded-lg p-4 bg-primary-25">
                             <p class="text-sm font-semibold text-primary-900 mb-3">Imagen de Portada Actual</p>
@@ -130,7 +130,7 @@
                         </div>
                     @endif
 
-                    <!-- Cover Image Upload -->
+
                     <div>
                         <x-input-label for="cover_image" value="Actualizar Imagen de Portada" />
                         <div class="mt-2">
@@ -151,7 +151,7 @@
                         <x-input-error :messages="$errors->get('cover_image')" />
                     </div>
 
-                    <!-- Description -->
+
                     <div>
                         <x-input-label for="description" value="Descripción" />
                         <textarea
@@ -163,7 +163,7 @@
                         >{{ old('description', $book->description) }}</textarea>
                     </div>
 
-                    <!-- Action Buttons -->
+
                     <div class="flex gap-3 justify-end pt-6 border-t border-primary-200">
                         <a href="{{ route('books.index') }}" class="btn-secondary">
                             Cancelar
@@ -174,7 +174,7 @@
                     </div>
                 </form>
 
-                <!-- Delete Button (Separate) -->
+
                 <div class="mt-8 pt-8 border-t border-primary-200">
                     <form action="{{ route('books.destroy', $book->id) }}" method="POST" onsubmit="return confirm('¿Eliminar este libro?')">
                         @csrf

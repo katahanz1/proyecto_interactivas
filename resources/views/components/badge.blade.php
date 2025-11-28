@@ -1,4 +1,4 @@
-@props(['type' => 'neutral', 'dot' => false])
+@props(['type' => 'neutral'])
 
 @php
 $badgeClasses = match($type) {
@@ -12,8 +12,5 @@ $badgeClasses = match($type) {
 @endphp
 
 <span {{ $attributes->merge(['class' => $badgeClasses]) }}>
-    @if ($dot)
-        <span class="status-dot {{ $type }}"></span>
-    @endif
     {{ $slot }}
 </span>

@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $loans = Loan::with(['user', 'book'])->latest()->get();
@@ -67,7 +64,7 @@ class LoanController extends Controller
         $loan->update([
             'status' => 'borrowed',
             'loan_date' => now(),
-            'due_date' => now()->addDays(7), // Reset dates on approval
+            'due_date' => now()->addDays(7),
         ]);
 
         $book->decrement('stock');
@@ -82,13 +79,11 @@ class LoanController extends Controller
 
     public function edit(Loan $loan)
     {
-        // Not implementing edit for loans to keep it simple, only return
         return redirect()->route('loans.index');
     }
 
     public function update(Request $request, Loan $loan)
     {
-        // This method will handle returning the book
         if ($loan->status == 'returned') {
             return back()->with('error', 'El libro ya ha sido devuelto.');
         }
@@ -124,8 +119,6 @@ class LoanController extends Controller
             return back()->with('error', 'Este libro está agotado.');
         }
 
-        // Check if user already has a pending request or active loan for this book?
-        // For simplicity, let's allow multiple for now, or maybe restrict 1 copy per user.
         $existingLoan = Loan::where('user_id', auth()->id())
                             ->where('book_id', $book->id)
                             ->whereIn('status', ['requested', 'borrowed'])
@@ -139,11 +132,9 @@ class LoanController extends Controller
             'user_id' => auth()->id(),
             'book_id' => $book->id,
             'loan_date' => now(),
-            'due_date' => now()->addDays(7), // Default 7 days
+            'due_date' => now()->addDays(7),
             'status' => 'requested',
         ]);
-
-        // Do NOT decrement stock yet. Stock decrements on approval.
 
         return redirect()->route('books.catalog')->with('success', 'Préstamo solicitado exitosamente. Esperando aprobación.');
     }

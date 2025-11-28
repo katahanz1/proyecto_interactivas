@@ -30,7 +30,11 @@
     <div class="stats-grid">
         <div class="stat-card">
             <div class="stat-value">{{ $stats['total_books'] }}</div>
-            <div class="stat-label">Total Libros</div>
+            <div class="stat-label">Títulos Únicos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ $stats['total_stock'] }}</div>
+            <div class="stat-label">Total Inventario</div>
         </div>
         <div class="stat-card">
             <div class="stat-value">{{ $stats['total_students'] }}</div>
